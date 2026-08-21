@@ -335,6 +335,23 @@
       margin-top: 6px;
     }
 
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-bottom: 28px;
+    }
+
+    .detail-list {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .detail-list li + li {
+      margin-top: 8px;
+    }
+
     .platform-note {
       margin-bottom: 28px;
     }
@@ -397,7 +414,8 @@
 
     @media (max-width: 920px) {
       .hero,
-      .sections {
+      .sections,
+      .detail-grid {
         grid-template-columns: 1fr;
       }
 
@@ -505,6 +523,43 @@
       </article>
     </section>
 
+    <section class="detail-grid">
+      <article class="section-card">
+        <h2>What is MyInstants Soundboard Buttons?</h2>
+        <p>MyInstants Soundboard Buttons is a mobile meme soundboard app built for fast, repeatable sound playback. It gives you quick access to sound buttons, reaction audio, searchable categories, favorites, and sharing tools so you can find the right clip in seconds.</p>
+      </article>
+      <article class="section-card">
+        <h2>How people use MyInstants</h2>
+        <ul class="detail-list">
+          <li>Play instant reaction sounds in chats, group calls, and jokes with friends.</li>
+          <li>Find meme sounds quickly when you want a fast audio reply or punchline.</li>
+          <li>Save favorite buttons for repeat use instead of searching every time.</li>
+          <li>Share funny clips into other apps, social posts, and casual content.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="detail-grid">
+      <article class="section-card">
+        <h2>Why choose MyInstants</h2>
+        <ul class="detail-list">
+          <li>Fast playback is the core focus, with a streamlined soundboard built for repeated taps and quick reactions.</li>
+          <li>On iPhone, smart pre-loading and audio caching help reduce delays and make repeated playback smoother when remote sounds are used.</li>
+          <li>Favorites, categories, and search make it easier to keep the sounds you actually use close at hand.</li>
+          <li>Long-press actions on supported versions can unlock extra controls such as favorite, share, rename, color changes, looping, and section management.</li>
+        </ul>
+      </article>
+      <article class="section-card">
+        <h2>Extra tools on selected versions</h2>
+        <ul class="detail-list">
+          <li>On iPhone, selected versions may include voice recording and custom sound creation.</li>
+          <li>Additional iPhone features can include AI Voice text-to-speech styles, TikTok sound import, widgets, ringtone workflows, and Shortcuts automation.</li>
+          <li>Some iPhone versions also support cloud backup or restore, custom sections, and expanded organization options for heavier users.</li>
+          <li>Feature availability varies by platform and app version, so the exact toolset may differ between iPhone and Android.</li>
+        </ul>
+      </article>
+    </section>
+
     <section class="section-card platform-note">
       <h2>Feature availability by platform</h2>
       <p>MyInstants Soundboard Buttons is available on both iPhone and Android, with the same core experience focused on fast sound playback, favorites, search, categories, and sharing.</p>
@@ -520,6 +575,10 @@
       <div class="faq-item">
         <strong>What can I do in the app?</strong>
         <p>You can play sound buttons instantly, browse categories, search for sounds, save favorites, and share clips. Feature availability may vary slightly by platform.</p>
+      </div>
+      <div class="faq-item">
+        <strong>Does MyInstants include advanced soundboard tools?</strong>
+        <p>Yes. Selected versions of the app can include features such as custom sound creation, smart pre-loading for smoother playback, widgets, automation, and extra sound-management tools.</p>
       </div>
       <div class="faq-item">
         <strong>Where can I find privacy and legal information?</strong>
