@@ -460,8 +460,8 @@
         </div>
       </div>
       <nav class="nav">
-        <a data-analytics-event="website_ios_store_tap" href="https://apps.apple.com/us/app/myinstants-soundboard-buttons/id1046474775">App Store</a>
-        <a data-analytics-event="website_android_store_tap" href="https://play.google.com/store/apps/details?id=com.cartoonmobile.soundboardandroid&hl=en&gl=NZ">Google Play</a>
+        <a data-analytics-event="website_ios_store_tap" data-analytics-outbound="true" href="https://apps.apple.com/us/app/myinstants-soundboard-buttons/id1046474775">App Store</a>
+        <a data-analytics-event="website_android_store_tap" data-analytics-outbound="true" href="https://play.google.com/store/apps/details?id=com.cartoonmobile.soundboardandroid&hl=en&gl=NZ">Google Play</a>
         <a data-analytics-event="website_windows_page_tap" href="windows.html">Windows Beta</a>
         <a href="TermsofUse.html">Terms</a>
         <a href="PrivacyPolicy.html">Privacy</a>
@@ -475,10 +475,10 @@
         <p>MyInstants is a fast meme soundboard for reaction sounds, funny audio clips, and classic sound buttons. Play sounds instantly, search your favorites, and share clips in seconds.</p>
 
         <div class="hero-actions">
-          <a class="store-badge" data-analytics-event="website_ios_store_tap" href="https://apps.apple.com/us/app/myinstants-soundboard-buttons/id1046474775">
+          <a class="store-badge" data-analytics-event="website_ios_store_tap" data-analytics-outbound="true" href="https://apps.apple.com/us/app/myinstants-soundboard-buttons/id1046474775">
             <img src="Download_on_the_App_Store_Badge.svg-2.png" alt="Download MyInstants Soundboard Buttons on the App Store">
           </a>
-          <a class="store-badge" data-analytics-event="website_android_store_tap" href="https://play.google.com/store/apps/details?id=com.cartoonmobile.soundboardandroid&hl=en&gl=NZ">
+          <a class="store-badge" data-analytics-event="website_android_store_tap" data-analytics-outbound="true" href="https://play.google.com/store/apps/details?id=com.cartoonmobile.soundboardandroid&hl=en&gl=NZ">
             <img src="Google_Play_Store_badge_EN.svg.png" alt="Download MyInstants Soundboard Buttons on Google Play">
           </a>
         </div>
@@ -613,10 +613,10 @@
       <h2>Download MyInstants</h2>
       <p>Choose your platform and install the official MyInstants Soundboard Buttons app.</p>
       <div class="hero-actions">
-        <a class="store-badge" data-analytics-event="website_ios_store_tap" href="https://apps.apple.com/us/app/myinstants-soundboard-buttons/id1046474775">
+        <a class="store-badge" data-analytics-event="website_ios_store_tap" data-analytics-outbound="true" href="https://apps.apple.com/us/app/myinstants-soundboard-buttons/id1046474775">
           <img src="Download_on_the_App_Store_Badge.svg-2.png" alt="Download MyInstants Soundboard Buttons on the App Store">
         </a>
-        <a class="store-badge" data-analytics-event="website_android_store_tap" href="https://play.google.com/store/apps/details?id=com.cartoonmobile.soundboardandroid&hl=en&gl=NZ">
+        <a class="store-badge" data-analytics-event="website_android_store_tap" data-analytics-outbound="true" href="https://play.google.com/store/apps/details?id=com.cartoonmobile.soundboardandroid&hl=en&gl=NZ">
           <img src="Google_Play_Store_badge_EN.svg.png" alt="Download MyInstants Soundboard Buttons on Google Play">
         </a>
       </div>
@@ -633,8 +633,26 @@
   </div>
   <script>
     document.querySelectorAll('[data-analytics-event]').forEach(function (link) {
-      link.addEventListener('click', function () {
-        gtag('event', link.dataset.analyticsEvent);
+      link.addEventListener('click', function (event) {
+        if (link.dataset.analyticsOutbound !== 'true' || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+          gtag('event', link.dataset.analyticsEvent);
+          return;
+        }
+
+        event.preventDefault();
+        var destination = link.href;
+        var hasNavigated = false;
+        var navigate = function () {
+          if (!hasNavigated) {
+            hasNavigated = true;
+            window.location.assign(destination);
+          }
+        };
+        gtag('event', link.dataset.analyticsEvent, {
+          event_callback: navigate,
+          event_timeout: 800
+        });
+        window.setTimeout(navigate, 800);
       });
     });
   </script>
