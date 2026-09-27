@@ -20,6 +20,13 @@
   <meta name="twitter:title" content="MyInstants Soundboard Buttons - Official App">
   <meta name="twitter:description" content="Play instant meme sounds and sound buttons on iPhone and Android.">
   <meta name="twitter:image" content="https://myinstantssoundboard.github.io/app-icon.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BYH0HWM6HB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BYH0HWM6HB');
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -400,6 +407,13 @@
       color: var(--muted);
     }
 
+    .text-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--accent-strong);
+      font-weight: 700;
+    }
+
     .footer {
       display: flex;
       justify-content: space-between;
@@ -446,8 +460,9 @@
         </div>
       </div>
       <nav class="nav">
-        <a href="https://apps.apple.com/us/app/myinstants-soundboard-buttons/id1046474775">App Store</a>
-        <a href="https://play.google.com/store/apps/details?id=com.cartoonmobile.soundboardandroid&hl=en&gl=NZ">Google Play</a>
+        <a data-analytics-event="website_ios_store_tap" href="https://apps.apple.com/us/app/myinstants-soundboard-buttons/id1046474775">App Store</a>
+        <a data-analytics-event="website_android_store_tap" href="https://play.google.com/store/apps/details?id=com.cartoonmobile.soundboardandroid&hl=en&gl=NZ">Google Play</a>
+        <a data-analytics-event="website_windows_page_tap" href="windows.html">Windows Beta</a>
         <a href="TermsofUse.html">Terms</a>
         <a href="PrivacyPolicy.html">Privacy</a>
       </nav>
@@ -460,10 +475,10 @@
         <p>MyInstants is a fast meme soundboard for reaction sounds, funny audio clips, and classic sound buttons. Play sounds instantly, search your favorites, and share clips in seconds.</p>
 
         <div class="hero-actions">
-          <a class="store-badge" href="https://apps.apple.com/us/app/myinstants-soundboard-buttons/id1046474775">
+          <a class="store-badge" data-analytics-event="website_ios_store_tap" href="https://apps.apple.com/us/app/myinstants-soundboard-buttons/id1046474775">
             <img src="Download_on_the_App_Store_Badge.svg-2.png" alt="Download MyInstants Soundboard Buttons on the App Store">
           </a>
-          <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.cartoonmobile.soundboardandroid&hl=en&gl=NZ">
+          <a class="store-badge" data-analytics-event="website_android_store_tap" href="https://play.google.com/store/apps/details?id=com.cartoonmobile.soundboardandroid&hl=en&gl=NZ">
             <img src="Google_Play_Store_badge_EN.svg.png" alt="Download MyInstants Soundboard Buttons on Google Play">
           </a>
         </div>
@@ -519,7 +534,7 @@
       </article>
       <article class="section-card">
         <h3>Official links</h3>
-        <p>This page is the official MyInstants landing page for mobile downloads, support links, and policy pages.</p>
+        <p>This page is the official MyInstants landing page for mobile downloads, Windows beta updates, support links, and policy pages.</p>
       </article>
     </section>
 
@@ -566,6 +581,14 @@
       <p>Some features may vary by platform or app version. On iPhone, selected versions of MyInstants may also include additional tools such as recording, extra creation options, widgets, backups, or other expanded features.</p>
     </section>
 
+    <section class="section-card platform-note">
+      <h2>MyInstants for Windows</h2>
+      <p>We are preparing a Windows beta for playing soundboard clips during games and calls. The beta is still in testing and is not available to download yet.</p>
+      <div class="hero-actions">
+        <a class="text-link" data-analytics-event="website_windows_page_tap" href="windows.html">Explore the Windows beta</a>
+      </div>
+    </section>
+
     <section class="section-card faq">
       <h2>Frequently asked questions</h2>
       <div class="faq-item">
@@ -590,10 +613,10 @@
       <h2>Download MyInstants</h2>
       <p>Choose your platform and install the official MyInstants Soundboard Buttons app.</p>
       <div class="hero-actions">
-        <a class="store-badge" href="https://apps.apple.com/us/app/myinstants-soundboard-buttons/id1046474775">
+        <a class="store-badge" data-analytics-event="website_ios_store_tap" href="https://apps.apple.com/us/app/myinstants-soundboard-buttons/id1046474775">
           <img src="Download_on_the_App_Store_Badge.svg-2.png" alt="Download MyInstants Soundboard Buttons on the App Store">
         </a>
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.cartoonmobile.soundboardandroid&hl=en&gl=NZ">
+        <a class="store-badge" data-analytics-event="website_android_store_tap" href="https://play.google.com/store/apps/details?id=com.cartoonmobile.soundboardandroid&hl=en&gl=NZ">
           <img src="Google_Play_Store_badge_EN.svg.png" alt="Download MyInstants Soundboard Buttons on Google Play">
         </a>
       </div>
@@ -608,5 +631,12 @@
       </div>
     </section>
   </div>
+  <script>
+    document.querySelectorAll('[data-analytics-event]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        gtag('event', link.dataset.analyticsEvent);
+      });
+    });
+  </script>
 </body>
 </html>
