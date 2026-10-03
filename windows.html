@@ -19,6 +19,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-BYH0HWM6HB');
+    gtag('event', 'website_windows_beta_page_view');
   </script>
   <style>
     :root {
@@ -53,6 +54,7 @@
     .hero p { max-width: 590px; margin: 18px auto 0; color: var(--muted); font-size: 1.08rem; }
     .interest-button { margin-top: 28px; border: 0; border-radius: 8px; padding: 14px 20px; background: var(--accent); color: white; font: inherit; font-weight: 700; cursor: pointer; }
     .interest-button:hover { background: #cf5d00; }
+    .interest-button:disabled { cursor: default; opacity: 0.65; }
     .status { min-height: 26px; margin: 16px 0 0; color: var(--muted); font-size: 0.94rem; }
     .details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 22px; }
     .detail { padding: 18px; background: white; border: 1px solid var(--line); border-radius: 8px; text-align: left; }
@@ -107,9 +109,18 @@
     </footer>
   </main>
   <script>
-    document.getElementById('beta-interest').addEventListener('click', function () {
+    const interestButton = document.getElementById('beta-interest');
+    const interestStatus = document.getElementById('beta-status');
+    let interestRecorded = false;
+
+    interestButton.addEventListener('click', function () {
+      if (interestRecorded) {
+        return;
+      }
+      interestRecorded = true;
+      interestButton.disabled = true;
       gtag('event', 'website_windows_beta_interest_tap');
-      document.getElementById('beta-status').textContent = 'Thanks for your interest. The Windows beta is still being tested.';
+      interestStatus.textContent = 'Thanks for your interest. The Windows beta is still being tested.';
     });
   </script>
 </body>
