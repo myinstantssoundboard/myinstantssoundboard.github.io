@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyInstants SoundBoard Buttons for Windows - Private Beta</title>
+  <meta name="description" content="Private Beta download and setup information for MyInstants SoundBoard Buttons for Windows.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" type="image/png" href="../app-icon.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BYH0HWM6HB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BYH0HWM6HB');
+    gtag('event', 'website_windows_beta_page_view');
+
+    // Beta release settings. Update only this block for each new Windows build.
+    // Leave installerUrl and sha256 empty until the matching GitHub Release exists.
+    const WINDOWS_BETA = {
+      version: '0.1.0-beta.19',
+      releaseDate: 'October 9, 2026',
+      installerName: 'MyInstantsSetup-0.1.0-beta.19-win-x64.exe',
+      installerUrl: '',
+      sha256: '',
+      releaseNotes: 'Private Beta release with soundboard playback, Audio Setup, and Virtual Mic testing.'
+    };
+  </script>
+  <style>
+    :root {
+      --ink: #18202a;
+      --muted: #596673;
+      --line: #d8e0e7;
+      --surface: #ffffff;
+      --subtle: #f3f6f8;
+      --blue: #2478de;
+      --blue-hover: #1765c2;
+      --teal: #0e766e;
+      --warning: #7c4a09;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.55; }
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; min-height: 76px; gap: 18px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-weight: 750; }
+    .brand img { width: 38px; height: 38px; border-radius: 8px; }
+    .beta-mark { color: var(--muted); font-size: .88rem; }
+    .status-band { background: var(--subtle); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .status-band .wrap { padding: 11px 0; color: var(--muted); font-size: .92rem; }
+    .intro { display: grid; grid-template-columns: minmax(0, .95fr) minmax(360px, 1.05fr); gap: 48px; align-items: center; padding: 66px 0 52px; }
+    .eyebrow { margin: 0 0 13px; color: var(--teal); font-size: .84rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { max-width: 660px; margin: 0; font-size: clamp(2.2rem, 5vw, 4.25rem); line-height: 1.05; letter-spacing: 0; }
+    .lede { max-width: 610px; margin: 21px 0 0; color: var(--muted); font-size: 1.16rem; }
+    .download-box { padding: 26px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); box-shadow: 0 14px 36px rgba(22, 36, 48, .08); }
+    .download-box h2 { margin: 0; font-size: 1.25rem; }
+    .release-meta { display: flex; flex-wrap: wrap; gap: 9px 18px; margin: 14px 0 20px; color: var(--muted); font-size: .93rem; }
+    .download-button { display: inline-flex; align-items: center; justify-content: center; width: 100%; min-height: 54px; border: 0; border-radius: 7px; background: var(--blue); color: #fff; font: inherit; font-weight: 750; text-decoration: none; cursor: pointer; }
+    .download-button:hover { background: var(--blue-hover); }
+    .download-button[aria-disabled="true"] { cursor: not-allowed; background: #9aa9b8; pointer-events: none; }
+    .download-status { min-height: 24px; margin: 12px 0 0; color: var(--muted); font-size: .9rem; }
+    .hash { margin: 20px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; }
+    code { display: block; margin-top: 5px; overflow-wrap: anywhere; color: var(--ink); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    section { border-top: 1px solid var(--line); }
+    .section-inner { padding: 58px 0; }
+    h2 { margin: 0 0 14px; font-size: clamp(1.55rem, 3vw, 2.35rem); line-height: 1.15; }
+    .section-intro { max-width: 760px; margin: 0; color: var(--muted); }
+    .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 28px; }
+    figure { margin: 0; }
+    figure img { display: block; width: 100%; border: 1px solid var(--line); border-radius: 8px; background: #111820; }
+    figcaption { margin-top: 10px; color: var(--muted); font-size: .92rem; }
+    .notice { margin-top: 25px; padding: 20px; border-left: 4px solid #d3932f; background: #fff8e9; color: #55380e; }
+    .steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 42px; margin: 25px 0 0; padding: 0; list-style: none; counter-reset: steps; }
+    .steps li { position: relative; min-height: 58px; padding: 13px 0 13px 45px; border-bottom: 1px solid var(--line); }
+    .steps li::before { position: absolute; top: 13px; left: 0; display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; background: var(--ink); color: #fff; content: counter(steps); counter-increment: steps; font-size: .82rem; font-weight: 800; }
+    .driver { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 26px; align-items: center; margin-top: 26px; padding: 25px; border: 1px solid var(--line); border-radius: 8px; background: var(--subtle); }
+    .driver h3 { margin: 0 0 8px; font-size: 1.15rem; }
+    .driver p { max-width: 700px; margin: 0; color: var(--muted); }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .link-button { display: inline-flex; justify-content: center; padding: 10px 13px; border: 1px solid #9dbce2; border-radius: 6px; color: #175ca8; font-weight: 700; text-decoration: none; white-space: nowrap; }
+    .link-button:hover { background: #eaf3ff; }
+    details { margin-top: 22px; border: 1px solid var(--line); border-radius: 8px; }
+    summary { padding: 16px 18px; cursor: pointer; font-weight: 750; }
+    .system-notices { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 0 18px 18px; }
+    .system-notices img { width: 100%; border: 1px solid var(--line); border-radius: 6px; }
+    .system-notices p { margin: 10px 0 0; color: var(--muted); font-size: .91rem; }
+    .feedback-band { background: #15232e; color: #fff; }
+    .feedback-band .section-inner { display: flex; justify-content: space-between; align-items: center; gap: 26px; }
+    .feedback-band h2 { margin: 0; font-size: 1.55rem; }
+    .feedback-band p { margin: 7px 0 0; color: #c7d4dd; }
+    .feedback-band .link-button { border-color: #78aeea; color: #fff; }
+    .footer { padding: 26px 0 38px; color: var(--muted); font-size: .9rem; }
+    .footer a { color: inherit; }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 32px, 1120px); }
+      .topbar { min-height: 65px; }
+      .intro, .product-grid, .system-notices { grid-template-columns: 1fr; }
+      .intro { gap: 30px; padding: 44px 0; }
+      .steps { grid-template-columns: 1fr; }
+      .driver, .feedback-band .section-inner { grid-template-columns: 1fr; display: grid; }
+      .section-inner { padding: 42px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap topbar">
+    <a class="brand" href="../index.html">
+      <img src="../app-icon.png" alt="MyInstants SoundBoard Buttons">
+      <span>MyInstants SoundBoard Buttons</span>
+    </a>
+    <span class="beta-mark">Private Beta</span>
+  </header>
+
+  <div class="status-band"><div class="wrap">Invitation-only test build. Please share this page only with invited Windows Beta testers.</div></div>
+
+  <main>
+    <section class="wrap intro">
+      <div>
+        <p class="eyebrow">Private Beta</p>
+        <h1>MyInstants SoundBoard Buttons for Windows</h1>
+        <p class="lede">Play soundboard buttons locally or route your microphone and sounds to Roblox, Discord, and other voice apps.</p>
+      </div>
+      <aside class="download-box" aria-labelledby="download-heading">
+        <h2 id="download-heading">Windows Beta download</h2>
+        <div class="release-meta">
+          <span id="beta-version"></span>
+          <span>Windows 11 x64 tested</span>
+          <span id="beta-date"></span>
+        </div>
+        <a class="download-button" id="windows-download" aria-disabled="true">Download Windows Beta</a>
+        <p class="download-status" id="download-status" role="status" aria-live="polite"></p>
+        <div class="hash">
+          <strong>Installer SHA-256</strong>
+          <code id="beta-hash">Release details will appear here before invitations are sent.</code>
+          <span id="beta-installer-name"></span>
+        </div>
+      </aside>
+    </section>
+
+    <section><div class="wrap section-inner">
+      <h2>What the Windows app looks like</h2>
+      <p class="section-intro">The Beta includes the desktop soundboard and an Audio Setup screen for selecting a microphone, local monitor, and virtual output.</p>
+      <div class="product-grid">
+        <figure>
+          <img src="../myinstants_windows_main.png" alt="MyInstants Windows soundboard with sound buttons">
+          <figcaption>Soundboard buttons and playback controls.</figcaption>
+        </figure>
+        <figure>
+          <img src="../myinstants_windows_audio.png" alt="MyInstants Audio Setup with microphone, local monitor, and virtual output">
+          <figcaption>Audio Setup with physical microphone, local monitor, virtual output, and live levels.</figcaption>
+        </figure>
+      </div>
+    </div></section>
+
+    <section><div class="wrap section-inner">
+      <h2>Before you install</h2>
+      <p class="section-intro">This is an early Windows Beta. The installer downloads MyInstants and its bundled sound library. To enable the virtual microphone, it may request Windows administrator permission to install a third-party audio driver and may require a restart.</p>
+      <div class="notice">This Beta installer is currently not code signed. Download it only from this official MyInstants page. If Windows shows a security warning or you are unsure, stop and contact us through the feedback link below.</div>
+    </div></section>
+
+    <section><div class="wrap section-inner">
+      <h2>First-time Audio Setup</h2>
+      <ol class="steps">
+        <li>Run MyInstants Setup.</li>
+        <li>Approve administrator permission if you want the virtual microphone.</li>
+        <li>Restart Windows if prompted.</li>
+        <li>In MyInstants, open Audio Setup.</li>
+        <li>Choose your physical microphone and local headphones or speakers.</li>
+        <li>Start Virtual Mic.</li>
+        <li>In Discord or Roblox, choose <strong>CABLE Output</strong> as the microphone when available.</li>
+      </ol>
+      <div class="notice">MyInstants does not intentionally change your Windows default microphone or speaker. Device selection remains under your control.</div>
+    </div></section>
+
+    <section><div class="wrap section-inner">
+      <h2>Virtual microphone driver</h2>
+      <div class="driver">
+        <div>
+          <h3>VB-CABLE by VB-Audio</h3>
+          <p>MyInstants uses the official VB-CABLE virtual audio driver to route microphone and soundboard audio to voice apps. Origin: vb-cable.com. VB-CABLE is donationware; if you find it useful, you can support VB-Audio.</p>
+        </div>
+        <div class="actions">
+          <a class="link-button" href="https://vb-audio.com/Cable/" target="_blank" rel="noopener noreferrer">Learn about VB-CABLE</a>
+          <a class="link-button" href="https://shop.vb-audio.com/" target="_blank" rel="noopener noreferrer">Support VB-Audio</a>
+        </div>
+      </div>
+      <details>
+        <summary>Possible Windows prompts during installation</summary>
+        <div class="system-notices">
+          <div>
+            <img src="../demo_smartscreen.png" alt="Example Windows security notice for an unsigned Beta installer">
+            <p>Windows may show a security notice because this early Beta is not yet code signed. Download only from this official MyInstants page. If the app name or source looks different, close it and report the problem.</p>
+          </div>
+          <div>
+            <img src="../demo_uac.png" alt="Example Windows administrator permission request">
+            <p>Windows asks for administrator permission to install MyInstants and the official VB-CABLE virtual audio driver. VB-CABLE installation may require a Windows restart.</p>
+          </div>
+        </div>
+      </details>
+    </div></section>
+
+    <section><div class="wrap section-inner">
+      <h2>Updates</h2>
+      <p class="section-intro">When a newer Beta is available, download and run the latest MyInstants Setup. Your MyInstants preferences and VB-CABLE installation are kept.</p>
+      <p class="section-intro" id="release-notes"></p>
+    </div></section>
+  </main>
+
+  <section class="feedback-band"><div class="wrap section-inner">
+    <div>
+      <h2>Having trouble downloading, installing, or using MyInstants?</h2>
+      <p>Send a problem report without leaving the Beta flow.</p>
+    </div>
+    <a class="link-button" id="feedback-link" href="../windows-feedback/">Report a problem</a>
+  </div></section>
+
+  <footer class="wrap footer">
+    <a href="../PrivacyPolicy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="../TermsofUse.html">Terms of Use</a>
+  </footer>
+
+  <script>
+    const releaseIsConfigured = WINDOWS_BETA.installerUrl && WINDOWS_BETA.sha256;
+    const downloadLink = document.getElementById('windows-download');
+    const downloadStatus = document.getElementById('download-status');
+    document.getElementById('beta-version').textContent = WINDOWS_BETA.version;
+    document.getElementById('beta-date').textContent = WINDOWS_BETA.releaseDate;
+    document.getElementById('beta-installer-name').textContent = WINDOWS_BETA.installerName;
+    document.getElementById('release-notes').textContent = WINDOWS_BETA.releaseNotes;
+    document.getElementById('feedback-link').href = '../windows-feedback/?version=' + encodeURIComponent(WINDOWS_BETA.version);
+
+    if (releaseIsConfigured) {
+      downloadLink.href = WINDOWS_BETA.installerUrl;
+      downloadLink.removeAttribute('aria-disabled');
+      downloadLink.addEventListener('click', function (event) {
+        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+          gtag('event', 'website_windows_test_download_tap');
+          return;
+        }
+        event.preventDefault();
+        const destination = downloadLink.href;
+        let hasNavigated = false;
+        const startDownload = function () {
+          if (!hasNavigated) {
+            hasNavigated = true;
+            window.location.assign(destination);
+          }
+        };
+        downloadStatus.textContent = 'Your download is starting...';
+        gtag('event', 'website_windows_test_download_tap', { event_callback: startDownload, event_timeout: 800 });
+        window.setTimeout(startDownload, 800);
+      });
+      document.getElementById('beta-hash').textContent = WINDOWS_BETA.sha256;
+    } else {
+      downloadStatus.textContent = 'The matching installer link and checksum will be added before Beta invitations are sent.';
+    }
+  </script>
+</body>
+</html>
