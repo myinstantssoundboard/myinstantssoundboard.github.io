@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report a Windows Beta Problem - MyInstants</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" type="image/png" href="../app-icon.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BYH0HWM6HB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BYH0HWM6HB');
+  </script>
+  <style>
+    :root { --ink:#18202a; --muted:#596673; --line:#d8e0e7; --blue:#2478de; --surface:#f3f6f8; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--surface); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.5; }
+    main { width:min(720px, calc(100% - 32px)); margin:0 auto; padding:42px 0 58px; }
+    .brand { display:inline-flex; align-items:center; gap:10px; color:inherit; font-weight:750; text-decoration:none; }
+    .brand img { width:36px; height:36px; border-radius:8px; }
+    .panel { margin-top:30px; padding:28px; border:1px solid var(--line); border-radius:8px; background:#fff; }
+    h1 { margin:0; font-size:clamp(2rem, 6vw, 3rem); line-height:1.1; }
+    .intro { color:var(--muted); }
+    label { display:block; margin:20px 0 7px; font-weight:700; }
+    select, textarea { width:100%; border:1px solid #aebbc7; border-radius:6px; padding:11px; color:var(--ink); background:#fff; font:inherit; }
+    textarea { min-height:190px; resize:vertical; }
+    .counter { min-height:20px; margin-top:5px; color:var(--muted); font-size:.84rem; text-align:right; }
+    button { min-height:48px; margin-top:18px; padding:10px 17px; border:0; border-radius:6px; background:var(--blue); color:#fff; font:inherit; font-weight:750; cursor:pointer; }
+    button:disabled { cursor:not-allowed; opacity:.6; }
+    .status { min-height:24px; margin:14px 0 0; color:var(--muted); }
+    .note { margin:20px 0 0; color:var(--muted); font-size:.9rem; }
+    .back { display:inline-block; margin-top:22px; color:#175ca8; }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="brand" href="../windows-beta/"><img src="../app-icon.png" alt="MyInstants SoundBoard Buttons"><span>MyInstants SoundBoard Buttons</span></a>
+    <section class="panel">
+      <h1>Report a problem</h1>
+      <p class="intro">Tell us what happened with the Windows Beta. Do not include contact details, device names, file paths, pairing codes, or screenshots.</p>
+      <form id="feedback-form">
+        <label for="category">What needs attention?</label>
+        <select id="category" name="category">
+          <option value="installation">Download or installation</option>
+          <option value="audio">Audio playback</option>
+          <option value="virtual_mic">Virtual microphone</option>
+          <option value="roblox_discord">Roblox or Discord</option>
+          <option value="other">Something else</option>
+        </select>
+        <label for="message">What happened?</label>
+        <textarea id="message" name="message" maxlength="2000" required placeholder="Describe what you were trying to do and what happened."></textarea>
+        <div class="counter" id="counter">0 / 2000</div>
+        <button id="submit" type="submit">Send report</button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </form>
+      <p class="note">Reports are used to investigate and improve this Beta. This form does not request an email address and we cannot reply directly.</p>
+      <a class="back" href="../windows-beta/">Back to Windows Beta</a>
+    </section>
+  </main>
+  <script>
+    const API_URL = 'https://us-central1-my-instants.cloudfunctions.net/feedback_api/v1/feedback';
+    const version = new URLSearchParams(window.location.search).get('version') || 'unknown';
+    const form = document.getElementById('feedback-form');
+    const message = document.getElementById('message');
+    const counter = document.getElementById('counter');
+    const status = document.getElementById('status');
+    const submit = document.getElementById('submit');
+
+    message.addEventListener('input', function () { counter.textContent = message.value.length + ' / 2000'; });
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      const text = message.value.trim();
+      if (!text) return;
+      submit.disabled = true;
+      status.textContent = 'Sending your report...';
+      try {
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            product_id: 'soundboard_windows',
+            source: 'website',
+            report_kind: 'feedback',
+            category: document.getElementById('category').value,
+            message: text,
+            diagnostics: { app_version: version }
+          })
+        });
+        const result = await response.json().catch(function () { return {}; });
+        if (!response.ok || !result.accepted) throw new Error(result.error || 'TEMPORARILY_UNAVAILABLE');
+        form.reset();
+        counter.textContent = '0 / 2000';
+        status.textContent = 'Thanks. Your report was sent.';
+      } catch (error) {
+        const messages = {
+          RATE_LIMITED: 'You have sent several reports recently. Please try again later.',
+          TEMPORARILY_UNAVAILABLE: 'Feedback is temporarily unavailable. Please try again later.'
+        };
+        status.textContent = messages[error.message] || 'We could not send your report. Check your connection and try again.';
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
