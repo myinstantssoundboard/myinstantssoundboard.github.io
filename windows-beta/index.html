@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyInstants SoundBoard Buttons for Windows - Private Beta</title>
-  <meta name="description" content="Private Beta download and setup information for MyInstants SoundBoard Buttons for Windows.">
+  <title>MyInstants SoundBoard Buttons for Windows Beta</title>
+  <meta name="description" content="Limited Windows Beta download and setup information for MyInstants SoundBoard Buttons.">
   <meta name="robots" content="noindex,nofollow">
-  <link rel="icon" type="image/png" href="../app-icon.png">
+  <link rel="icon" type="image/png" href="../assets/app-icon.png">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-BYH0HWM6HB"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -23,7 +23,7 @@
       installerName: 'MyInstantsSetup-0.1.0-beta.19-win-x64.exe',
       installerUrl: '',
       sha256: '',
-      releaseNotes: 'Private Beta release with soundboard playback, Audio Setup, and Virtual Mic testing.'
+      releaseNotes: 'Windows Beta release with soundboard playback, Audio Setup, and Virtual Mic testing.'
     };
   </script>
   <style>
@@ -106,18 +106,18 @@
 <body>
   <header class="wrap topbar">
     <a class="brand" href="../index.html">
-      <img src="../app-icon.png" alt="MyInstants SoundBoard Buttons">
+      <img src="../assets/app-icon.png" alt="MyInstants SoundBoard Buttons">
       <span>MyInstants SoundBoard Buttons</span>
     </a>
-    <span class="beta-mark">Private Beta</span>
+    <span class="beta-mark">Windows Beta</span>
   </header>
 
-  <div class="status-band"><div class="wrap">Invitation-only test build. Please share this page only with invited Windows Beta testers.</div></div>
+  <div class="status-band"><div class="wrap">Windows Beta access is opened for limited test periods.</div></div>
 
   <main>
     <section class="wrap intro">
       <div>
-        <p class="eyebrow">Private Beta</p>
+        <p class="eyebrow">Limited Beta</p>
         <h1>MyInstants SoundBoard Buttons for Windows</h1>
         <p class="lede">Play soundboard buttons locally or route your microphone and sounds to Roblox, Discord, and other voice apps.</p>
       </div>
@@ -132,23 +132,23 @@
         <p class="download-status" id="download-status" role="status" aria-live="polite"></p>
         <div class="hash">
           <strong>Installer SHA-256</strong>
-          <code id="beta-hash">Release details will appear here before invitations are sent.</code>
+          <code id="beta-hash">Release details will appear here before this Beta opens.</code>
           <span id="beta-installer-name"></span>
         </div>
       </aside>
     </section>
 
     <section><div class="wrap section-inner">
-      <h2>What the Windows app looks like</h2>
-      <p class="section-intro">The Beta includes the desktop soundboard and an Audio Setup screen for selecting a microphone, local monitor, and virtual output.</p>
+      <h2>Play sounds your way on PC</h2>
+      <p class="section-intro">Use MyInstants to play the bundled soundboard locally, pair your iPhone to bring over Favorites, and choose how sound reaches your headphones, speakers, and voice apps. Audio Setup keeps those choices visible before you start Virtual Mic.</p>
       <div class="product-grid">
         <figure>
-          <img src="../myinstants_windows_main.png" alt="MyInstants Windows soundboard with sound buttons">
-          <figcaption>Soundboard buttons and playback controls.</figcaption>
+          <img src="../assets/windows/main.png" alt="MyInstants Windows soundboard with sound buttons">
+          <figcaption>Browse and play soundboard buttons from the desktop app.</figcaption>
         </figure>
         <figure>
-          <img src="../myinstants_windows_audio.png" alt="MyInstants Audio Setup with microphone, local monitor, and virtual output">
-          <figcaption>Audio Setup with physical microphone, local monitor, virtual output, and live levels.</figcaption>
+          <img src="../assets/windows/audio-setup.png" alt="MyInstants Audio Setup with microphone, local monitor, and virtual output">
+          <figcaption>Choose your audio path, then start Virtual Mic when you need it.</figcaption>
         </figure>
       </div>
     </div></section>
@@ -189,11 +189,11 @@
         <summary>Possible Windows prompts during installation</summary>
         <div class="system-notices">
           <div>
-            <img src="../demo_smartscreen.png" alt="Example Windows security notice for an unsigned Beta installer">
+            <img src="../assets/windows/smartscreen-example.png" alt="Example Windows security notice for an unsigned Beta installer">
             <p>Windows may show a security notice because this early Beta is not yet code signed. Download only from this official MyInstants page. If the app name or source looks different, close it and report the problem.</p>
           </div>
           <div>
-            <img src="../demo_uac.png" alt="Example Windows administrator permission request">
+            <img src="../assets/windows/uac-example.png" alt="Example Windows administrator permission request">
             <p>Windows asks for administrator permission to install MyInstants and the official VB-CABLE virtual audio driver. VB-CABLE installation may require a Windows restart.</p>
           </div>
         </div>
@@ -212,7 +212,7 @@
       <h2>Having trouble downloading, installing, or using MyInstants?</h2>
       <p>Send a problem report without leaving the Beta flow.</p>
     </div>
-    <a class="link-button" id="feedback-link" href="../windows-feedback/">Report a problem</a>
+    <a class="link-button" id="feedback-link" href="feedback/">Report a problem</a>
   </div></section>
 
   <footer class="wrap footer">
@@ -227,7 +227,7 @@
     document.getElementById('beta-date').textContent = WINDOWS_BETA.releaseDate;
     document.getElementById('beta-installer-name').textContent = WINDOWS_BETA.installerName;
     document.getElementById('release-notes').textContent = WINDOWS_BETA.releaseNotes;
-    document.getElementById('feedback-link').href = '../windows-feedback/?version=' + encodeURIComponent(WINDOWS_BETA.version);
+    document.getElementById('feedback-link').href = 'feedback/?version=' + encodeURIComponent(WINDOWS_BETA.version);
 
     if (releaseIsConfigured) {
       downloadLink.href = WINDOWS_BETA.installerUrl;
@@ -252,7 +252,7 @@
       });
       document.getElementById('beta-hash').textContent = WINDOWS_BETA.sha256;
     } else {
-      downloadStatus.textContent = 'The matching installer link and checksum will be added before Beta invitations are sent.';
+      downloadStatus.textContent = 'The matching installer link and checksum will be added before this Beta opens.';
     }
   </script>
 </body>
