@@ -79,9 +79,15 @@ h1 { margin: 0 0 16px; font-size: clamp(2.2rem, 4vw, 4.1rem); line-height: 1.04;
 .downloads { margin-top: 28px; padding: 28px; background: linear-gradient(135deg,#fff5e8,#fff); border-radius: 28px; border: 1px solid var(--line); box-shadow: var(--shadow); }
 .downloads p { margin: 0; color: var(--muted); }
 .footer { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: .92rem; }
+.language-picker { position: relative; }
+.language-picker summary { cursor: pointer; color: var(--accent-strong); font-weight: 700; }
+.language-list { position: absolute; z-index: 2; bottom: calc(100% + 10px); left: 0; display: grid; grid-template-columns: repeat(2, minmax(112px, 1fr)); gap: 2px; width: 256px; padding: 8px; background: #fff; border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); }
+.language-list a { padding: 7px 8px; border-radius: 7px; color: var(--muted); }
+.language-list a:hover, .language-list a[aria-current="page"] { background: #fff1de; color: var(--accent-strong); }
 
 @media (max-width: 920px) {
   .hero, .sections, .detail-grid { grid-template-columns: 1fr; }
   .hero-copy, .hero-panel, .downloads { padding-left: 22px; padding-right: 22px; }
   .topbar { align-items: flex-start; flex-direction: column; }
+  .language-list { right: 0; left: auto; }
 }
